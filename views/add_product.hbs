@@ -1,44 +1,121 @@
-<div class="container">
-    <form action="/add_product" method="POST">
-    <table style="width: 100%;" border="2">
-        <thead>
-            <tr>
-                <th style="width: 30%;"></th>
-                <th style="width: 30%;"></th>
-                <th style="width: 40%;">Hình ảnh</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th>Tên sản phẩm</th>
-                <th><input type="text" name="name" placeholder="Nhập tên sản phẩm" style="width: 100%;"></th>
-                <th rowspan="3">
-                    <img src="images/default-thumbnail.jpg" alt="Hình ảnh sản phẩm" style="width:100%">
-                    <input type="text" name="imagePath" value="https://carolinadojo.com/wp-content/uploads/2017/04/default-image.jpg" hidden>
-                </th>
-            </tr>
-            <tr>
-                <th>Giá sản phẩm</th>
-                <th><input type="text" name="price" placeholder="Nhập giá sản phẩm" style="width: 100%;"></th>
-            </tr>
-            <tr>
-                <th>Loại sản phẩm</th>
-                <th><input type="text" name="type" placeholder="Nhập loại sản phẩm" style="width: 100%;"></th>
-            </tr>
-             <tr>
-                <th>Giới tính</th>
-                <th><input type="text" name="gender" placeholder="Nhập giới tính" style="width: 100%;"></th>
-            </tr>
-            <tr>
-                <th>Brand</th>
-                <th><input type="text" name="Brand" placeholder="Nhập nhãn hiệu" style="width: 100%;"></th>
-                <th>
-                    <button>Thêm hình ảnh</button>
-                </th>
-            </tr>
-        </tbody>
-    </table>
-    <button type="submit">Xác nhận</button>
-    <button><a href="/product">Quay lại</a></button>
-    </form>
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+</style>
+<div class="container" style="margin-left:10px; width:80%">
+  <form action="/add_product" method="POST">
+  <div class="col-sm-5">
+      <div class="mycard">
+      <img src="/images/img_avatar2.png" id="img-preview"/>
+      <label class="file-upload-container" for="file-upload">
+        <input id="file-upload" type="file" style="display:none;">
+        Select an Image
+      </label>
+      
+    </div>
+    <input id="file-url" name='imgpreview' type="text" style="display:none;">
+    <!-- Scripts -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="assets/js/upload.js"></script>
+  </div>
+  <div class="col-sm-7">
+  <div class="row">
+    <div class="col-25">
+      <label for="fname">Tên</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="fname" name="name" placeholder="Tên sản phẩm">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="lname">Giá</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="lname" name="price" placeholder="Giá">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="type">Loại</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="type" name="type" placeholder="Loại">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="gender">Đối tượng</label>
+    </div>
+    <div class="col-75">
+      <select id="gender" name="gender">
+        <option value="Men">Nam</option>
+        <option value="Women">Nữ</option>
+        <option value="Kid">Trẻ em</option>
+        <option value="Customise">Tùy chọn</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="brand">Nhãn</label>
+    </div>
+    <div class="col-75">
+      <select id="brand" name="brand">
+        <option value="Men">Nike</option>
+        <option value="Women">Nike Sport</option>
+        <option value="Kid">Jordan</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <input type="submit" value="Xác nhận">
+  </div>
+  </div>
+  
+  </form>
 </div>

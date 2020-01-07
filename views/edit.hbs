@@ -7,7 +7,7 @@
                 <span class="text-danger font-italic">{{error}}</span>
               </div>
             {{/if}}
-            <form action="/edit={{data.id}}" method="POST">
+            <form action="/edit={{id}}" method="POST">
                 <ul>
                     <li class="text-info">Tên: </li>
                     <li><input type="text" name="name" pattern="{1,}" required="required" value="{{data.Ten}}"></li>
