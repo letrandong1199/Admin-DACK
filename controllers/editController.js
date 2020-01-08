@@ -4,9 +4,10 @@ const router=express.Router();
 module.exports.getEditProduct= async function(req,res){
     if(req.isAuthenticated()){
         const result = await pool.query('SELECT * FROM "index" as idx left join "detail" as dt ON idx.id = dt.id WHERE idx.id=$1', [req.params.id]);
-        console.log(result.rows[0].Ten);
+        console.log(result.rows[0].id);
         res.render('edit',{
-            data:result.rows[0]
+            data:result.rows[0],
+            id : req.params.id
         });
     }
     else
