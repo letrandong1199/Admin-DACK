@@ -3,6 +3,7 @@ const pool=require('../models/data');
 const router=express.Router();
 
   module.exports.showAllUser=async function(req,res){
+    if(req.isAuthenticated()){
     const currentPage = Number(req.query.page) || 1;
     const offsetPage = (currentPage - 1) * 6;
 
@@ -33,6 +34,9 @@ const router=express.Router();
         currentPage,
         path
     });
+  }
+  else
+  res.redirect('/');
 };
 
 
