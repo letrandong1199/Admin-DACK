@@ -18,15 +18,19 @@ module.exports.getAddProduct=function(req,res){
 module.exports.postAddProduct = async function(req, res)
 {
     try{
-        const name = req.body.name;
-        const price = req.body.price;
-        const type = req.body.type;
-        const gender = req.body.gender;
-        const brand = req.body.Brand;
-        console.log(name);
-        resul= pool.query('INSERT INTO index("Ten","Gia","Loai","Gioitinh","Brand", "Hinh") VALUES ($1, $2, $3,$4,$5, $6)',[name, price, type,gender,brand, "#"]);
-        console.log(resul);
-        res.redirect("/product")
+        if(req.isAuthenticated()){
+            const name = req.body.name;
+            const price = req.body.price;
+            const type = req.body.type;
+            const gender = req.body.gender;
+            const brand = req.body.Brand;
+            console.log(name);
+            resul= pool.query('INSERT INTO index("Ten","Gia","Loai","Gioitinh","Brand", "Hinh") VALUES ($1, $2, $3,$4,$5, $6)',[name, price, type,gender,brand, "#"]);
+            console.log(resul);
+            res.redirect("/product");
+        }
+        else
+            res.redirect('/');
     } catch{
         res.render("add_product",{
           title: "Thêm sản phẩm",
