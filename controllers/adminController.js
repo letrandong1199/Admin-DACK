@@ -30,7 +30,7 @@ module.exports.getLogin = function(req, res, next) {
 
   module.exports.postLogin = passport.authenticate("local.login", {
     successRedirect: "/",
-    failureRedirect: "/login",
+    failureRedirect: "/",
     failureFlash: true
   });
 
@@ -66,28 +66,7 @@ module.exports.getLogin = function(req, res, next) {
     })}
 };
 module.exports.getLogout = function (req, res){
-  if (req.isUnauthenticated()){
-    res.render("/", {
-      title: "Đăng nhập",
-      headerTop: function() {
-        if (req.isAuthenticated()) {
-          return "headAuthen";
-        } else {
-          return "headUnAuthen";
-        }
-      },
-      username: function(){
-        if(req.isAuthenticated())
-        {
-          return req.user.Ten;
-        }
-      },
-      error: req.flash("error")
-    });
-  }
-  else 
-  {
-    req.logout();
-    res.redirect("/");
-  }
-}
+  if(req.isAuthenticated())
+     req.logout();
+     res.redirect('/');
+};

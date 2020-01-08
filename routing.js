@@ -15,8 +15,10 @@ const loginRouter=require('./routes/login');
 const editRouter=require('./routes/edit');
 const registerRouter=require('./routes/register');
 const addRouter=require('./routes/add_product');
+const logoutRouter=require('./routes/logout');
 
 
+router.use('/logout',logoutRouter)
 router.use('/add_product',addRouter);
 router.use('/index', indexRouter);
 router.use('/users', usersRouter);
