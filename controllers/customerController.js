@@ -33,7 +33,7 @@ const router=express.Router();
         currentPage,
         path
     });
-}
+};
 
 
 module.exports.getEditCustomer= async function(req,res){
