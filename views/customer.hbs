@@ -11,43 +11,42 @@
                   <table id="bootstrap-data-table" class="table table-striped table-bordered">
                     <thead>
                       <tr>
-                        <th>Họ và tên</th>
-                        <th>Email</th>
-                        <th>Account</th>
-                        <th>Password</th>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Họ</th>
+                        <th>Tên</th>
+                        <th>Số điện thoại</th>
                         <th><button><a href="#">Thêm khách hàng</a></button></th>
 						<th></th>
                       </tr>
                     </thead>
                     <tbody>
+                      {{#each data}}
                       <tr>
-                        <td>Võ Minh Hoàng</td>
-                        <td>hhhh@gmail.com</td>
-                        <td>vominhhoang</td>
-                        <td>12345678</td>
+                        <td>{{this.id}}</td>
+                        <td>{{this.username}}</td>
+                        <td>{{this.Ho}}</td>
+                        <td>{{this.Ten}}</td>
+                        <td>{{this.SDT}}</td>
 						<th><button><a href="/change_info">Chỉnh Sửa</a></button></th>
                       </tr>
-                      <tr>
-                        <td>Võ Minh Hoàng</td>
-                        <td>hhhh@gmail.com</td>
-                        <td>vominhhoang</td>
-                        <td>12345678</td>
-						<th><button><a href="/change_info">Chỉnh Sửa</a></button></th>
-                      </tr>
-                      </tr>
-                      <tr>
-                        <td>Võ Minh Hoàng</td>
-                        <td>hhhh@gmail.com</td>
-                        <td>vominhhoang</td>
-                        <td>12345678</td>
-						<th><button><a href="/change_info">Chỉnh Sửa</a></button></th>
-                      </tr>
-                      </tr>
-                      <tr>
+                      {{/each}}
                     </tbody>
                   </table>
                         </div>
                     </div>
+                         <!--Pagination-->
+            <nav aria-label="Page navigation example">
+                <div class="col-lg-6 col-md-6">
+                        <p>Hiển thị kết quả từ {{startIndex}} đến {{endIndex}} trên {{totalUsers}}</p>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                <ul class="pagination">
+                    {{#pagination pageCount currentPage 6 path}}
+                    {{/pagination}}
+                </ul>
+                </div>
+            </nav>
                 </div>
 
 

@@ -13,8 +13,12 @@ const chartRouter=require('./routes/chart');
 const topRouter=require('./routes/top');
 const loginRouter=require('./routes/login');
 const editRouter=require('./routes/edit');
+const registerRouter=require('./routes/register');
+const addRouter=require('./routes/add_product');
 
-router.use('/', loginRouter);
+
+router.use('/add_product',addRouter);
+router.use('/index', indexRouter);
 router.use('/users', usersRouter);
 router.use('/customer',customerRouter);
 router.use('/change_info',changeRouter);
@@ -23,6 +27,7 @@ router.use('/product',productRouter);
 router.use('/bill',billRouter);
 router.use('/chart',chartRouter);
 router.use('/top',topRouter);
-router.use('/index',indexRouter);
-router.use('/edit',editRouter);
+router.use('/',loginRouter);
+router.use('/register',registerRouter);
+router.use('/',editRouter);
 module.exports=router;

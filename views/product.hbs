@@ -11,20 +11,24 @@
             <table id="bootstrap-data-table" class="table table-striped table-bordered">
               <thead>
                 <tr>
+                  <th>ID</th>
                   <th>Tên sản phẩm</th>
-                  <th>Mã sản phẩm</th>
+                  <th>Loại</th>
+                  <th>Giới tính</th>
                   <th>Giá</th>
-                  <th><button><a href="#">Thêm sản phẩm</a></button></th>
+                  <th><button><a href="add_product">Thêm sản phẩm</a></button></th>
                   <th></th>
                 </tr>
               </thead>
               <tbody>
                 {{#each data}}
                 <tr>
-                  <td>{{this.Ten}}</td>
                   <td>{{this.id}}</td>
+                  <td>{{this.Ten}}</td>
+                  <td>{{this.Loai}}</td>
+                  <td>{{this.Gioitinh}}</td>
                   <td>{{this.Gia}}</td>
-                  <th><button><a href="/edit">Chỉnh Sửa</a></button></th>
+                  <th><button><a href="/edit={{this.id}}">Chỉnh Sửa</a></button></th>
                 </tr>
                 {{/each}}
               </tbody>

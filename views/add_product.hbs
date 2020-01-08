@@ -1,0 +1,44 @@
+<div class="container">
+    <form action="/add_product" method="POST">
+    <table style="width: 100%;" border="2">
+        <thead>
+            <tr>
+                <th style="width: 30%;"></th>
+                <th style="width: 30%;"></th>
+                <th style="width: 40%;">Hình ảnh</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Tên sản phẩm</th>
+                <th><input type="text" name="name" placeholder="Nhập tên sản phẩm" style="width: 100%;"></th>
+                <th rowspan="3">
+                    <img src="images/default-thumbnail.jpg" alt="Hình ảnh sản phẩm" style="width:100%">
+                    <input type="text" name="imagePath" value="https://carolinadojo.com/wp-content/uploads/2017/04/default-image.jpg" hidden>
+                </th>
+            </tr>
+            <tr>
+                <th>Giá sản phẩm</th>
+                <th><input type="text" name="price" placeholder="Nhập giá sản phẩm" style="width: 100%;"></th>
+            </tr>
+            <tr>
+                <th>Loại sản phẩm</th>
+                <th><input type="text" name="type" placeholder="Nhập loại sản phẩm" style="width: 100%;"></th>
+            </tr>
+             <tr>
+                <th>Giới tính</th>
+                <th><input type="text" name="gender" placeholder="Nhập giới tính" style="width: 100%;"></th>
+            </tr>
+            <tr>
+                <th>Brand</th>
+                <th><input type="text" name="Brand" placeholder="Nhập nhãn hiệu" style="width: 100%;"></th>
+                <th>
+                    <button>Thêm hình ảnh</button>
+                </th>
+            </tr>
+        </tbody>
+    </table>
+    <button type="submit">Xác nhận</button>
+    <button><a href="/product">Quay lại</a></button>
+    </form>
+</div>

@@ -8,6 +8,27 @@ module.exports.bill=function(req,res){
 module.exports.chart=function(req,res){
     res.render('chart',{title:'Biểu đồ'})
 };
+module.exports.getAddProduct=function(req,res){
+    res.render('add_product',{title:'Thêm sản phẩm'})
+};
+module.exports.postAddProduct = async function(req, res)
+{
+    try{
+        const name = req.body.name;
+        const price = req.body.price;
+        const type = req.body.type;
+        const gender = req.body.gender;
+        const brand = req.body.Brand;
+        console.log(name);
+        resul= pool.query('INSERT INTO index("Ten","Gia","Loai","Gioitinh","Brand", "Hinh") VALUES ($1, $2, $3,$4,$5, $6)',[name, price, type,gender,brand, "#"]);
+        console.log(resul);
+        res.redirect("/product")
+    } catch{
+        res.render("add_product",{
+          title: "Thêm sản phẩm",
+          error: "Thêm thất bại"
+    })}
+};
 
 
 module.exports.showAllProduct=async function(req,res){

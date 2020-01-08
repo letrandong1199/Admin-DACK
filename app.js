@@ -3,11 +3,29 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var flash=require('connect-flash');
+var session = require('express-session');
+var bodyParser = require("body-parser");
+
 //var hbs=require('express-handlebars');
 const hbs=require('hbs');
 
 const routing=require('./routing');
 var app = express();
+const passport = require('passport');
+
+require("./config/passport");
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false 
+})); 
+app.use(flash()); 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(passport.initialize())
+app.use(passport.session())
+
 
 // view engine setup
 //app.engine('hbs',hbs({extname:'hbs',defaultLayout:'layout',layoutsDir:__dirname+'/views/layouts/'}));
@@ -22,15 +40,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/',routing);
-//passport
 
-// app.use(require('serve-static')(__dirname + '../public'));
-// app.use(require('cookie-parser')());
-// app.use(require('body-parser').urlencoded({ extended: true }));
-// app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
-// app.use(passport.initialize());
-// app.use(passport.session());
+const { getStateAuthenticated } = require("./controllers/authenticationController");
+
+// Routing
+app.use("/", getStateAuthenticated, routing);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
