@@ -65,3 +65,29 @@ module.exports.getLogin = function(req, res, next) {
           error: "Tài khoản đã tồn tại!"
     })}
 };
+module.exports.getLogout = function (req, res){
+  if (req.isUnauthenticated()){
+    res.render("/", {
+      title: "Đăng nhập",
+      headerTop: function() {
+        if (req.isAuthenticated()) {
+          return "headAuthen";
+        } else {
+          return "headUnAuthen";
+        }
+      },
+      username: function(){
+        if(req.isAuthenticated())
+        {
+          return req.user.Ten;
+        }
+      },
+      error: req.flash("error")
+    });
+  }
+  else 
+  {
+    req.logout();
+    res.redirect("/");
+  }
+}

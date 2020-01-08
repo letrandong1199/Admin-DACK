@@ -9,7 +9,11 @@ module.exports.chart=function(req,res){
     res.render('chart',{title:'Biểu đồ'})
 };
 module.exports.getAddProduct=function(req,res){
-    res.render('add_product',{title:'Thêm sản phẩm'})
+    if(req.isAuthenticated()){
+      res.render('add_product',{title:'Thêm sản phẩm'})
+    }
+    else
+      res.redirect('/');
 };
 module.exports.postAddProduct = async function(req, res)
 {
