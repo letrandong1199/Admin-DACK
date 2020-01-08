@@ -21,7 +21,7 @@ router.use('/add_product',addRouter);
 router.use('/index', indexRouter);
 router.use('/users', usersRouter);
 router.use('/customer',customerRouter);
-router.use('/change_info',changeRouter);
+router.use('/',changeRouter);
 router.use('/shop',shopRouter);
 router.use('/product',productRouter);
 router.use('/bill',billRouter);

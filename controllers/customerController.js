@@ -2,10 +2,6 @@ const express = require('express');
 const pool=require('../models/data');
 const router=express.Router();
 
-module.exports=function(req, res){
-    res.render('customer',{title:'Danh sách người dùng'});
-  };
-
   module.exports.showAllUser=async function(req,res){
     const currentPage = Number(req.query.page) || 1;
     const offsetPage = (currentPage - 1) * 6;
@@ -38,3 +34,35 @@ module.exports=function(req, res){
         path
     });
 }
+
+
+module.exports.getEditCustomer= async function(req,res){
+  if(req.isAuthenticated()){
+    const result = await pool.query('SELECT * FROM "users" WHERE "id"=$1', [req.params.id]);
+    console.log(result.rows[0]);
+    res.render('change_info',{
+      data:result.rows[0]
+    });
+  }
+  else
+    res.redirect('/');
+  
+};
+module.exports.postEditCustomer = async function(req, res)
+{
+  try{
+      const firstname = req.body.firstname;
+      const lastname = req.body.lastname;
+      const phonenumber = req.body.phonenumber;
+      const email = req.body.email;
+      const id=req.params.id;
+      console.log(id);
+      resul= pool.query('UPDATE users SET ("Ho","Ten","SDT","Email")=($1,$2,$3,$4) WHERE "id"=$5',[firstname, lastname, phonenumber,email,id]);
+      console.log(resul);
+      res.redirect("/customer")
+  } catch{
+      res.render("change_info:=id",{
+        title: "Thay thông tin người dùng",
+        error: "Chỉnh sửa thất bại"
+  })}
+};

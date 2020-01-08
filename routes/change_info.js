@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
+const customerController=require('../controllers/customerController')
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('change_info', { title: 'Chỉnh sửa thông tin' });
-});
+router.get('/change_info=:id',customerController.getEditCustomer);
+
+router.post('/change_info=:id',customerController.postEditCustomer);
 
 module.exports = router;

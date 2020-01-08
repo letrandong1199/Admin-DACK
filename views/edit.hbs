@@ -2,34 +2,31 @@
 <div class="reg-form">
     <div class="container">
         <div class="reg">
-            <h3>Đăng ký ngay</h3>
-            <p>Xin chào, vui lòng điền thông tin chi tiết .</p>
-            <p>Nếu trước đây bạn đã đăng ký với chúng tôi, <a href="/login">nhấp vào đây</a></p>
             {{#if error}}
               <div class="col-md-12">
                 <span class="text-danger font-italic">{{error}}</span>
               </div>
             {{/if}}
-            <form action="/edit" method="POST">
+            <form action="/edit={{data.id}}" method="POST">
                 <ul>
-                    <li class="text-info">Họ: </li>
-                    <li><input type="text"  pattern="{1,}" required="required" value="{{data.Ten}}"></li>
+                    <li class="text-info">Tên: </li>
+                    <li><input type="text" name="name" pattern="{1,}" required="required" value="{{data.Ten}}"></li>
                 </ul>
                 <ul>
                     <li class="text-info">Giá: </li>
-                    <li><input type="text"  pattern="{1,}" required="required" value="{{data.Gia}}"></li>
+                    <li><input type="text"  name="price" pattern="{1,}" required="required" value="{{data.Gia}}"></li>
                 </ul>
                 <ul>
                     <li class="text-info">Loại </li>
-                    <li><input type="text"  pattern="{1,}" required="required"value="{{data.Loai}}"></li>
+                    <li><input type="text" name="type" pattern="{1,}" required="required"value="{{data.Loai}}"></li>
                 </ul>
                 <ul>
                     <li class="text-info">Giới tính </li>
-                    <li><input type="text"  pattern="{1,}" required="required"value="{{data.Gioitinh}}"></li>
+                    <li><input type="text" name="gender" pattern="{1,}" required="required"value="{{data.Gioitinh}}"></li>
                 </ul>
                    <ul>
                     <li class="text-info">Brand</li>
-                    <li><input type="text"  pattern="{1,}" required="required" value="{{data.Brand}}"></li>
+                    <li><input type="text" name="brand" pattern="{1,}" required="required" value="{{data.Brand}}"></li>
                 </ul>             
         <div class="row">
             <div class="col-md-2"><button type="submit">Xác nhận</button></div>

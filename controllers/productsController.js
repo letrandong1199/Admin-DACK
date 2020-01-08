@@ -36,8 +36,8 @@ module.exports.showAllProduct=async function(req,res){
     const offsetPage = (currentPage - 1) * 6;
 
 
-    const allProducts= await pool.query('SELECT * FROM "index"');
-    const allProOffset = await pool.query('SELECT * FROM "index" LIMIT 6 offset $1',[offsetPage]);
+    const allProducts= await pool.query('SELECT * FROM "index" ORDER BY "id"');
+    const allProOffset = await pool.query('SELECT * FROM "index" ORDER BY "id" LIMIT 6 offset $1 ',[offsetPage]);
     console.log(allProOffset);
 
     const limit = 6;
